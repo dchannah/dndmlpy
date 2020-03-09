@@ -1,0 +1,3 @@
+[submodule "lib/dnddata"]
+	path = lib/dnddata
+	url = https://github.com/oganm/dnddata
