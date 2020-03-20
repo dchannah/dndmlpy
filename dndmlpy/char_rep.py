@@ -157,6 +157,7 @@ Weapons:
             include_attributes: Should character attributes be included in the feature vector?
             include_skills: Should a one-hot of skill proficiencies be included?
             include_weapons: Should a one-hot of weapons be included?
+            include_char_name: Should character names be included?
 
         """
         feature_vector_as_list = []
