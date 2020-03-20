@@ -29,7 +29,7 @@ def train_visualize_random_forest(
     labels: list,
     rf_estimators: int,
     rf_random_state: int = 42,
-) -> list:
+) -> dict:
     """ Trains and visualizes a random forest classifier.
 
     Notes:
