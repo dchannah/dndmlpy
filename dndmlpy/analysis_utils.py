@@ -130,7 +130,7 @@ def visualize_clustering_results(cluster_points: list, labels: list) -> None:
     plt.show()
 
 
-def tsne_points_by_label(feature_matrix: np.array, perplexity: int) -> list:
+def tsne_points(feature_matrix: np.array, perplexity: int) -> list:
     """ Applies a t-SNE analysis and returns the character positions grouped by class.
 
     Notes:
@@ -175,7 +175,7 @@ def tsne_points_by_label(feature_matrix: np.array, perplexity: int) -> list:
     return plottable_list_form
 
 
-def umap_points_by_label(
+def umap_points(
     feature_matrix: np.array, umap_neighors: int = 200, min_dist: float = 0.1
 ) -> list:
     """ As with the t-SNE method above, but with UMAP instead. 
