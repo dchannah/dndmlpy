@@ -149,9 +149,8 @@ def tsne_points_by_label(feature_matrix: np.array, perplexity: int) -> list:
         perplexity: Perplexity for the t-SNE model. N^(1/2) is a reasonable guess.
 
     Returns:
-        A dictionary mapping class labels to t-SNE points, e.g. {
-                "Druid": [(tsne_dim1, tsne_dim2), (tsne_dim1, tsne_dim2)]
-            } 
+        A list of (x, y) tuples corresponding to the coordinates of each character in the embedding
+        space.
     
     """
     number_of_t_sne_components = 2
