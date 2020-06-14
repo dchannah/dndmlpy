@@ -6,6 +6,7 @@ from sklearn.manifold import TSNE
 from sklearn.metrics import plot_confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.inspection import permutation_importance
 
 
 COLOR_DICT = {
@@ -29,7 +30,7 @@ def train_visualize_random_forest(
     labels: list,
     rf_estimators: int,
     rf_random_state: int = 42,
-) -> dict:
+) -> tuple:
     """ Trains and visualizes a random forest classifier.
 
     Notes:
@@ -42,7 +43,7 @@ def train_visualize_random_forest(
         rf_random_state: Random state seed for reproducibility.
 
     Returns:
-        A dictionary of character names, their predicted labels, and actual labels.
+        A dictionary of character names and labels; also returns permutation_importances.
     """
 
     # Create the train/test split.
@@ -78,8 +79,12 @@ def train_visualize_random_forest(
     plot_confusion_matrix(rfc, X_test, y_test, normalize=None, ax=ax)
     plt.show()
 
+    # Get feature importances
+    permutation_importances = permutation_importance(rfc, X_test, y_test, random_state=rf_random_state, n_jobs=2)
+    sorted_idx = permutation_importances.importances_mean.argsort()
+
     # Finally, return the dictionary of labels.
-    return labels_by_character
+    return labels_by_character, permutation_importances, sorted_idx
 
 
 def visualize_clustering_results(cluster_points: list, labels: list) -> None:

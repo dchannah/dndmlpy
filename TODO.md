@@ -1,4 +1,4 @@
 # TODO
 
-* Add feature importance analyzer to analysis_utils and demonstrate in the notebook.
 * Make README more complete.
+* Simple feed-forward neural network to predict stats from class, skill proficiencies, race, loadout, etc.

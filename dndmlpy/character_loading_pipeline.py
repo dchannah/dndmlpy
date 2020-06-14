@@ -56,7 +56,17 @@ def build_input_data(
     include_skills: bool = True,
     include_weapons: bool = True,
     include_char_names: bool = True,
-) -> np.array:
+) -> tuple:
+
+    feature_labels = []
+
+    if include_attributes:
+        feature_labels += ["str", "dex", "con", "int", "wis", "cha"]
+    if include_skills:
+        feature_labels += ["proficient in " + skill for skill in possible_skills_list]
+    if include_weapons:
+        feature_labels += ["has " + weapon for weapon in possible_weapons_list]
+
     return np.array(
         [
             character.build_feature_vector(
@@ -69,7 +79,7 @@ def build_input_data(
             )
             for character in charlist
         ]
-    )
+    ), feature_labels
 
 
 def build_output_data(charlist: list) -> np.array:
